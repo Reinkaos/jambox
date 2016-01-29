@@ -10,7 +10,6 @@ var Metronome = function (game, x, y, name, options) {
 
   Phaser.Sprite.call(this, game, x, y, name);
 
-  this.game.bars = 0;
 
   this.bpm = options.bpm;
   this.bps = 60 / this.bpm;
@@ -19,6 +18,9 @@ var Metronome = function (game, x, y, name, options) {
   this.beatValue = 4; // Crochets ( currently unused param )
   this.elapsedTime = 0;
   this.currentBeat = 1;
+  this.currentBar = 0;
+
+  this.game.beat = new Phaser.Signal();
 
 };
 
@@ -31,12 +33,21 @@ Metronome.prototype.update = function () {
   var velocity = 127;
 
   if (this.elapsedTime % (this.beat * this.beatNumber) == 0) {
-    console.log('bar');
-    this.game.bars++;
+
+    if (this.currentBar < 4) {
+      this.currentBar++;
+    } else {
+      this.currentBar = 1;
+    }
+
+    console.log(this.currentBar);
+
   }
 
   if (this.elapsedTime % this.beat == 0) {
-    console.log('beat' + this.currentBeat);
+
+    // send beat signal
+    this.game.beat.dispatch(this);
 
     if (this.currentBeat == 1) {
       var note = 65;
@@ -44,9 +55,9 @@ Metronome.prototype.update = function () {
       var note = 50;
     }
 
-    MIDI.setVolume(0, 127);
-    MIDI.noteOn(0, note, velocity, delay);
-    MIDI.noteOff(0, note, delay);
+    // MIDI.setVolume(0, 127);
+    // MIDI.noteOn(0, note, velocity, delay);
+    // MIDI.noteOff(0, note, delay);
 
     if (this.currentBeat < this.beatNumber) {
       this.currentBeat++;
