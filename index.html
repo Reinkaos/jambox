@@ -1,0 +1,52 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Jambox</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="jambox"></div>
+
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+
+        <!-- polyfill -->
+        <script src="/js/vendor/inc/shim/Base64.js" type="text/javascript"></script>
+        <script src="/js/vendor/inc/shim/Base64binary.js" type="text/javascript"></script>
+        <script src="/js/vendor/inc/shim/WebAudioAPI.js" type="text/javascript"></script>
+
+        <!-- midi.js package -->
+        <script src="/js/vendor/midi/audioDetect.js" type="text/javascript"></script>
+        <script src="/js/vendor/midi/gm.js" type="text/javascript"></script>
+        <script src="/js/vendor/midi/loader.js" type="text/javascript"></script>
+        <script src="/js/vendor/midi/plugin.audiotag.js" type="text/javascript"></script>
+        <script src="/js/vendor/midi/plugin.webaudio.js" type="text/javascript"></script>
+        <script src="/js/vendor/midi/plugin.webmidi.js" type="text/javascript"></script>
+
+        <!-- utils -->
+        <script src="/js/vendor/util/dom_request_xhr.js" type="text/javascript"></script>
+        <script src="/js/vendor/util/dom_request_script.js" type="text/javascript"></script>
+
+        <script src="/js/vendor/phaser.min.js"></script>
+        <link rel="stylesheet" href="css/main.css">
+
+        <!-- Classes -->
+        <script src="./js/classes/metronome.js" type="text/javascript"></script>
+
+        <!-- States -->
+        <script src="./js/states/boot.js" type="text/javascript"></script>
+        <script src="./js/states/preload.js" type="text/javascript"></script>
+        <script src="./js/states/play.js" type="text/javascript"></script>
+
+        <!-- Game -->
+        <script src="js/main.js"></script>
+    </body>
+</html>
