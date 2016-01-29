@@ -12,7 +12,7 @@ var Metronome = function (game, x, y, name) {
 
   this.game.bars = 0;
 
-  this.bpm = 80;
+  this.bpm = 100;
   this.bps = 60 / this.bpm;
   this.beat = this.bps * 60;
   this.beatNumber = 4; // 4
@@ -32,11 +32,18 @@ Metronome.prototype.update = function () {
 
   if (this.elapsedTime % (this.beat * this.beatValue) == 0) {
     console.log('bar');
+    this.game.bars++;
   }
 
   if (this.elapsedTime % this.beat == 0) {
     console.log('beat' + this.currentBeat);
-    var note = 50;
+
+    if (this.currentBeat == 1) {
+      var note = 65;
+    } else {
+      var note = 50;
+    }
+
     MIDI.setVolume(0, 127);
     MIDI.noteOn(0, note, velocity, delay);
     MIDI.noteOff(0, note, delay);
