@@ -12,7 +12,7 @@ JamBox.Play.prototype = {
         # METRONOME
     \*------------------------------------*/
 
-    this.game.metronome = new Metronome(this.game, this.game.world.centerX, this.game.world.centerY, '');
+    this.game.metronome = new Metronome(this.game, this.game.world.centerX, this.game.world.centerY, '', options = { bpm: 60 });
     this.game.physics.arcade.enable(this.game.metronome);
     this.game.add.existing(this.game.metronome);
 

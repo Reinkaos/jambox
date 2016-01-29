@@ -6,14 +6,14 @@
 
 \*------------------------------------*/
 
-var Metronome = function (game, x, y, name) {
+var Metronome = function (game, x, y, name, options) {
 
   Phaser.Sprite.call(this, game, x, y, name);
 
   this.game.bars = 0;
 
-  this.bpm = 100;
-  this.bps = 80 / this.bpm;
+  this.bpm = options.bpm;
+  this.bps = 60 / this.bpm;
   this.beat = this.bps * 60;
   this.beatNumber = 4; // 4
   this.beatValue = 4; // Crochets ( currently unused param )
