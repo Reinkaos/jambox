@@ -13,10 +13,10 @@ var Metronome = function (game, x, y, name) {
   this.game.bars = 0;
 
   this.bpm = 100;
-  this.bps = 60 / this.bpm;
+  this.bps = 80 / this.bpm;
   this.beat = this.bps * 60;
   this.beatNumber = 4; // 4
-  this.beatValue =  4; // Crochets
+  this.beatValue = 4; // Crochets ( currently unused param )
   this.elapsedTime = 0;
   this.currentBeat = 1;
 
@@ -30,7 +30,7 @@ Metronome.prototype.update = function () {
   var delay = 0;
   var velocity = 127;
 
-  if (this.elapsedTime % (this.beat * this.beatValue) == 0) {
+  if (this.elapsedTime % (this.beat * this.beatNumber) == 0) {
     console.log('bar');
     this.game.bars++;
   }
@@ -48,7 +48,7 @@ Metronome.prototype.update = function () {
     MIDI.noteOn(0, note, velocity, delay);
     MIDI.noteOff(0, note, delay);
 
-    if (this.currentBeat < this.beatValue) {
+    if (this.currentBeat < this.beatNumber) {
       this.currentBeat++;
     } else {
       this.currentBeat = 1;
