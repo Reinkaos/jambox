@@ -13,14 +13,15 @@ JamBox.Boot.prototype = {
     this.game.stage.backgroundColor = '#fff';
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    var _this = this
+    var _this = this;
     MIDI.loadPlugin({
       soundfontUrl: '/js/vendor/soundfont/',
-      instrument: 'acoustic_grand_piano',
+      instruments: ['acoustic_grand_piano', 'acoustic_bass'],
       onprogress: function (state, progress) {
         console.log(state, progress);
       }, onsuccess: function () {
 
+        MIDI.programChange(1, MIDI.GM.byName['acoustic_bass'].number);
         _this.state.start('preload');
       },
     });

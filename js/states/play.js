@@ -24,6 +24,10 @@ JamBox.Play.prototype = {
     this.game.physics.arcade.enable(this.game.keyboard);
     this.game.add.existing(this.game.keyboard);
 
+    this.game.bass = new Bass(this.game, this.game.world.centerX, this.game.world.centerY, '');
+    this.game.physics.arcade.enable(this.game.bass);
+    this.game.add.existing(this.game.bass);
+
   },
 
   update: function () {
